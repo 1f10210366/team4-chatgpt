@@ -21,7 +21,7 @@ import team4_chatgpt.views
 
 
 urlpatterns = [
-    path('',include("team_chatgpt.urls")),
+    path('',include("team4_chatgpt.urls")),
     path('admin/', admin.site.urls),
 ]
 
