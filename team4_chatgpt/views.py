@@ -36,8 +36,8 @@ def index(request):
   else:
     form = ChatForm()
     
-    template = loader.get_template('team4_chatgpt/index.html')
-    context = {
+  template = loader.get_template('team4_chatgpt/index.html')
+  context = {
     'form':form,
     'chat_results':chat_results
   }
