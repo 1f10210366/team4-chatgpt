@@ -8,7 +8,7 @@ def index(request):
   
 
   form = ChatForm()
-  template = loader.get_template('team4_chatgpt/templates/team4_chargpt/index.html')
+  template = loader.get_template('team4_chatgpt/index.html')
   context = {
     'form':form
   }
