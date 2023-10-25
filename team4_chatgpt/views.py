@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic import TemplateView
 from django.template import loader
 from .forms import ChatForm
 import openai
+
+class TopView(TemplateView):
+    template_name = "team4_chatgpt/top.html"
 
 def index(request):
     chat_results = ""  # 'chat_results' の初期化
