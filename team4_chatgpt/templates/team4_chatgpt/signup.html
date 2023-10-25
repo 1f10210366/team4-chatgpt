@@ -1,0 +1,44 @@
+{% block title %}ホーム{% endblock %}
+
+{% block content %}
+
+
+{% load static %}  <!-- この行を追加 -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>top</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'team4_chatgpt/css/signup.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <br>
+            <h2 class="text-center p-5">ユーザ登録</h2>
+            <form method="POST" class="form">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label }}
+                        {{ field }}
+                        {{ field.errors }}
+                    </div>
+                {% endfor %}
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">登録</button>
+                <a href="{% url 'diary:top' %}" class="btn btn-secondary">戻る</a>
+            </div>>
+            </form>
+        </div>
+    </div>
+    
+</div>
+</body>
+</html>
+
+{% endblock %}
