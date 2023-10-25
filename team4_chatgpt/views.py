@@ -8,6 +8,8 @@ import openai
 class TopView(TemplateView):
     template_name = "team4_chatgpt/top.html"
 
+
+
 def index(request):
     chat_results = ""  # 'chat_results' の初期化
 
