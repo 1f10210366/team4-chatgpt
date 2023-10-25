@@ -3,12 +3,57 @@ from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.template import loader
 from .forms import ChatForm
+
+from django.views.generic import CreateView
+from django.views.generic import ListView
+from django.views.generic import DetailView
+from django.views.generic import UpdateView
+from django.views.generic import DeleteView
+from django.urls import reverse_lazy
+
 import openai
+
+# Create your views here.
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
+from . import forms
+
+#signup
+from django.contrib.auth import login
+from django.urls import reverse_lazy
+
+from .forms import SignUpForm
+
+
 
 class TopView(TemplateView):
     template_name = "team4_chatgpt/top.html"
 
 
+
+class LoginView(LoginView):
+    """ログインページ"""
+    form_class = forms.LoginForm
+    template_name = "team4_chatgpt/login.html"
+
+class LogoutView(LoginRequiredMixin, LogoutView):
+    """ログアウトページ"""
+    template_name = "team4_chatgpt/logout.html"
+
+
+class SignUpView(CreateView):
+    form_class = SignUpForm
+    template_name = "team4_chatgpt/signup.html"
+    success_url = reverse_lazy("team4_chatgpt:top")
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        self.object = user
+        return HttpResponseRedirect(self.get_success_url())
+    
 
 def index(request):
     chat_results = ""  # 'chat_results' の初期化
