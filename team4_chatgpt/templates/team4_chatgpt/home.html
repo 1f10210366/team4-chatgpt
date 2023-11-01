@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>ダッシュボード</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -61,13 +62,14 @@
             <li><a href="#">ホーム</a></li>
             <li><a href="#">プロフィール</a></li>
             <li><a href="#">設定</a></li>
-            <li><a href="#">ログアウト</a></li>
+            <li><a href="{% url 'team4_chatgpt:top' %}">ログアウト</a></li>
         </ul>
     </nav>
     <main>
         <div class="container">
             <h2>ようこそ、ユーザー名さん！</h2>
             <p>ダッシュボードのコンテンツをここに配置できます。</p>
+            <a href="{% url 'team4_chatgpt:index' %}" class="btn btn-outline-primary btn-block">問題作成</a>
         </div>
     </main>
 </body>
