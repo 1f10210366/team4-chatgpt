@@ -40,6 +40,8 @@ class LogoutView(LoginRequiredMixin, LogoutView):
     """ログアウトページ"""
     template_name = "team4_chatgpt/logout.html"
 
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = "team4_chatgpt/home.html"
 
 class SignUpView(CreateView):
     form_class = SignUpForm
