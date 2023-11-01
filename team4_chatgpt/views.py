@@ -1,14 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from django.template import loader
 from .forms import ChatForm
 
 from django.views.generic import CreateView
-from django.views.generic import ListView
-from django.views.generic import DetailView
-from django.views.generic import UpdateView
-from django.views.generic import DeleteView
 from django.urls import reverse_lazy
 
 import openai
@@ -31,7 +28,8 @@ from .forms import SignUpForm
 class TopView(TemplateView):
     template_name = "team4_chatgpt/top.html"
 
-
+class HomeView(LoginRequiredMixin, TemplateView):
+    template_name = "team4_chatgpt/home.html"
 
 class LoginView(LoginView):
     """ログインページ"""
@@ -46,7 +44,7 @@ class LogoutView(LoginRequiredMixin, LogoutView):
 class SignUpView(CreateView):
     form_class = SignUpForm
     template_name = "team4_chatgpt/signup.html"
-    success_url = reverse_lazy("team4_chatgpt:top")
+    success_url = reverse_lazy("team4_chatgpt:home")
 
     def form_valid(self, form):
         user = form.save()
