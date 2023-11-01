@@ -1,12 +1,14 @@
 {% load static %}
 
+<!DOCTYPE html>
 <html>
 
 <head>
     <meta charset='UTF-8'>
     <link rel="stylesheet" type="text/css" href="{% static 'team4_chatgpt/css/top.css' %}">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+          integrity="sha384-ggOyR0...
 </head>
 
 <body>
@@ -14,7 +16,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="{% url  'team4_chatgpt:top' %}">ホーム</a></li>
+                <li><a href="{% url'team4_chatgpt:top' %}">ホーム</a></li>
                 <li><a href="#">サービス</a></li>
                 <li><a href="#">製品</a></li>
                 <li><a href="#">お問い合わせ</a></li>
@@ -27,8 +29,9 @@
         <button type="submit">ChatGPT</button>
     </form>
 
-    {{ chat_results }}
-      
+    <div class="chat-results">
+        {{ chat_results }}
+    </div>
 </body>
 
 </html>

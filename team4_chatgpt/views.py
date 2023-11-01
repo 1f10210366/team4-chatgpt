@@ -55,34 +55,41 @@ class SignUpView(CreateView):
         return HttpResponseRedirect(self.get_success_url())
     
 
+# views.py
+
 def index(request):
-    chat_results = ""  # 'chat_results' の初期化
+    chat_results = ""
 
     if request.method == "POST":
         form = ChatForm(request.POST)
         if form.is_valid():
+            subject = form.cleaned_data['subject']
+            difficulty = form.cleaned_data['difficulty']
+            num_questions = form.cleaned_data['num_questions']
             sentence = form.cleaned_data['sentence']
 
-            openai.api_key = "wprzlNppD6DwlmSTfw35yGnUyaQ8XwfqnFKAnxB6WAjOaRp641FrM91T_NY1E05F6DyW6iIMsmJVSjuyKU8NZsg"
+            openai.api_key = "YOUR_OPENAI_API_KEY"
             openai.api_base = "https://api.openai.iniad.org/api/v1"
+
+            messages = [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": f"Subject: {subject}\nDifficulty: {difficulty}\nNumber of Questions: {num_questions}\n{sentence}"}
+            ]
 
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
-                messages=[
-                    {"role": "system", "content": "You are a helpful assistant."},
-                    {"role": "user", "content": f"{sentence}"}
-                ]
+                messages=messages
             )
 
             chat_results = response["choices"][0]["message"]["content"]
-
     else:
         form = ChatForm()
 
     template = loader.get_template('team4_chatgpt/index.html')
     context = {
         'form': form,
-        'chat_results': chat_results  # 変数名を 'chat_results' に修正
+        'chat_results': chat_results
     }
 
     return HttpResponse(template.render(context, request))
+
