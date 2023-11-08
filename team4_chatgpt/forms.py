@@ -26,8 +26,8 @@ class SignUpForm(UserCreationForm):
 from django import forms
 
 class ChatForm(forms.Form):
-    subject = forms.CharField(max_length=100, required=True)
-    difficulty = forms.ChoiceField(choices=[("easy", "Easy"), ("medium", "Medium"), ("hard", "Hard")], required=True)
-    num_questions = forms.IntegerField(min_value=1, max_value=10, required=True)
-    sentence = forms.CharField(widget=forms.Textarea, required=True)
+    subject = forms.CharField(max_length=100, required=False)
+    difficulty = forms.ChoiceField(choices=[("easy", "Easy"), ("medium", "Medium"), ("hard", "Hard")], required=False)
+    num_questions = forms.IntegerField(min_value=1, max_value=10, required=False)
+    #sentence = forms.CharField(widget=forms.Textarea, required=True)
 

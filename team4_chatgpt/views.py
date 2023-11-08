@@ -59,31 +59,29 @@ class SignUpView(CreateView):
 
 def index(request):
     chat_results = ""
+    response = None
+    form = ChatForm(request.POST)  # フォームの初期化を修正
 
-    if request.method == "POST":
-        form = ChatForm(request.POST)
-        if form.is_valid():
-            subject = form.cleaned_data['subject']
-            difficulty = form.cleaned_data['difficulty']
-            num_questions = form.cleaned_data['num_questions']
-            sentence = form.cleaned_data['sentence']
+    if request.method == "POST" and form.is_valid():  # フォームが有効であるかを確認
+        subject = form.cleaned_data['subject']
+        difficulty = form.cleaned_data['difficulty']
+        num_questions = form.cleaned_data['num_questions']
+    
+        openai.api_key = "wprzlNppD6DwlmSTfw35yGnUyaQ8XwfqnFKAnxB6WAjOaRp641FrM91T_NY1E05F6DyW6iIMsmJVSjuyKU8NZsg"
+        openai.api_base = "https://api.openai.iniad.org/api/v1"
 
-            openai.api_key = "YOUR_OPENAI_API_KEY"
-            openai.api_base = "https://api.openai.iniad.org/api/v1"
+        messages = [
+            {"role": "system", "content": "問題作成に特化したAI"},
+            {"role": "user", "content": f"{subject}で難易度は{difficulty}な問題を{num_questions}作成してください"}
+        ]
 
-            messages = [
-                {"role": "system", "content": "You are a helpful assistant."},
-                {"role": "user", "content": f"Subject: {subject}\nDifficulty: {difficulty}\nNumber of Questions: {num_questions}\n{sentence}"}
-            ]
+        response = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=messages
+        )
 
-            response = openai.ChatCompletion.create(
-                model="gpt-3.5-turbo",
-                messages=messages
-            )
-
-            chat_results = response["choices"][0]["message"]["content"]
-    else:
-        form = ChatForm()
+    if response:
+        chat_results = response["choices"][0]["message"]["content"]
 
     template = loader.get_template('team4_chatgpt/index.html')
     context = {
@@ -92,4 +90,3 @@ def index(request):
     }
 
     return HttpResponse(template.render(context, request))
-
