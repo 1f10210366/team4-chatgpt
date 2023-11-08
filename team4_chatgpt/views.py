@@ -72,7 +72,7 @@ def index(request):
 
         messages = [
             {"role": "system", "content": "問題作成に特化したAI"},
-            {"role": "user", "content": f"{subject}で難易度は{difficulty}な問題を{num_questions}作成してください"}
+            {"role": "user", "content": f"{subject}で難易度は{difficulty}な問題を{num_questions}作成してください。問題は一問づつ改行してください"}
         ]
 
         response = openai.ChatCompletion.create(
