@@ -17,9 +17,9 @@
                 <li><a href="{% url  'team4_chatgpt:index' %}">試験問題作成</a></li>
                 <li><a href="{% url 'team4_chatgpt:student' %}">新規学生登録</a></li>
                 <li><a href="{% url 'team4_chatgpt:text' %}">教材登録</a></li>
-                <li><a href="#">登録内容変更</a></li>
-                <li><a href="#">学生情報</a></li>
-                <li><a href="#">進路指導</a></li>
+                <li><a href="{% url 'team4_chatgpt:change' %}">登録内容変更</a></li>
+                <li><a href="{% url 'team4_chatgpt:info' %}">学生情報</a></li>
+                <li><a href="{% url 'team4_chatgpt:sinro' %}">進路指導</a></li>
             </ul>
         </nav>
     </header>

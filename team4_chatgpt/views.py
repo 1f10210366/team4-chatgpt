@@ -24,8 +24,8 @@ from django.urls import reverse_lazy
 from .forms import SignUpForm
 
 
-class Newstudent(TemplateView):
-    template_name = "team4_chatgpt/newstudent.html"
+
+
 
 class TopView(TemplateView):
     template_name = "team4_chatgpt/top.html"
@@ -56,6 +56,17 @@ class SignUpView(CreateView):
         self.object = user
         return HttpResponseRedirect(self.get_success_url())
     
+class Newstudent(TemplateView):
+    template_name = "team4_chatgpt/newstudent.html"
+
+class Info(TemplateView):
+    template_name = "team4_chatgpt/studentinfo.html"
+
+class Change(TemplateView):
+    template_name = "team4_chatgpt/change.html"
+
+class Sinro(TemplateView):
+    template_name = "team4_chatgpt/sinro.html"
 
 # views.py
 

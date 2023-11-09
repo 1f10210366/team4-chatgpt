@@ -1,12 +1,11 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>学生登録</title>
+    <title>サイト名</title>
     <link rel="stylesheet" type="text/css" href="{% static 'team4_chatgpt/css/top.css' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -17,8 +16,8 @@
             <ul>
                 <li><a href="{% url 'team4_chatgpt:top' %}">ホーム</a></li>
                 <li><a href="{% url  'team4_chatgpt:index' %}">試験問題作成</a></li>
+                <li><a href="{% url 'team4_chatgpt:student' %}">新規学生登録</a></li>
                 <li><a href="{% url 'team4_chatgpt:text' %}">教材登録</a></li>
-                <li><a href="{% url 'team4_chatgpt:change' %}">登録内容変更</a></li>
                 <li><a href="{% url 'team4_chatgpt:info' %}">学生情報</a></li>
                 <li><a href="{% url 'team4_chatgpt:sinro' %}">進路指導</a></li>
             </ul>
@@ -26,18 +25,32 @@
     </header>
     <main>
         <section class="hero">
-            <h1>新規学生登録</h1>
-            <p>新しい学生の登録を行ってください</p>
+            <h1>登録内容変更</h1>
+            
             <a href="#" class="cta-button">詳細を見る</a>
         </section>
 
 
-       
+        <section class="features">
+            <div class="feature">
+                <h2>アカウント</h2>
+                
+                <p>アカウントの情報を変更します</p>
+            </div>
 
+            <div class="feature">
 
-
-
-     
+                <h2>学生情報</h2>
+                
+                <p>学生情報の変更を行います</p>
+            </div>
+            <div class="feature">
+                <h2>教材情報</h2>
+                
+                <p>教材情報の変更を行います</p>
+            </div>
+            
+        </section>
     </main>
     <footer>
         <p>&copy; 2023 サイト名</p>

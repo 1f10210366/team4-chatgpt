@@ -1,41 +1,46 @@
 {% load static %}
 
-<!DOCTYPE html>
-<html>
 
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-    <meta charset='UTF-8'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>進路指導</title>
     <link rel="stylesheet" type="text/css" href="{% static 'team4_chatgpt/css/top.css' %}">
     <!-- Bootstrap CSS -->
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-          
 </head>
-
 <body>
-    <h1>試験問題作成</h1>
     <header>
         <nav>
             <ul>
-                <li><a href="{% url  'team4_chatgpt:top' %}">ホーム</a></li>
+                <li><a href="{% url 'team4_chatgpt:top' %}">ホーム</a></li>
+                <li><a href="{% url  'team4_chatgpt:index' %}">試験問題作成</a></li>
                 <li><a href="{% url 'team4_chatgpt:student' %}">新規学生登録</a></li>
                 <li><a href="{% url 'team4_chatgpt:text' %}">教材登録</a></li>
                 <li><a href="{% url 'team4_chatgpt:change' %}">登録内容変更</a></li>
                 <li><a href="{% url 'team4_chatgpt:info' %}">学生情報</a></li>
-                <li><a href="{% url 'team4_chatgpt:sinro' %}">進路指導</a></li>
             </ul>
         </nav>
     </header>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">ChatGPT</button>
-    </form>
+    <main>
+        <section class="hero">
+            <h1>進路指導</h1>
+            <p>まだ未定</p>
+            <a href="#" class="cta-button">詳細を見る</a>
+        </section>
 
-    <div class="chat-results">
-        {{ chat_results }}
-    </div>
+
+       
+
+
+
+
+     
+    </main>
+    <footer>
+        <p>&copy; 2023 サイト名</p>
+    </footer>
 </body>
-
 </html>
