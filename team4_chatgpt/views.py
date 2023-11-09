@@ -24,6 +24,8 @@ from django.urls import reverse_lazy
 from .forms import SignUpForm
 
 
+class Newstudent(TemplateView):
+    template_name = "team4_chatgpt/newstudent.html"
 
 class TopView(TemplateView):
     template_name = "team4_chatgpt/top.html"
@@ -90,3 +92,46 @@ def index(request):
     }
 
     return HttpResponse(template.render(context, request))
+
+
+def text(request):
+    chat_results = ""  # 'chat_results' の初期化
+
+
+    if request.method == "POST":
+        form = ChatForm(request.POST)
+        if form.is_valid():
+            sentence = form.cleaned_data['sentence']
+
+
+            openai.api_key = "wprzlNppD6DwlmSTfw35yGnUyaQ8XwfqnFKAnxB6WAjOaRp641FrM91T_NY1E05F6DyW6iIMsmJVSjuyKU8NZsg"
+            openai.api_base = "https://api.openai.iniad.org/api/v1"
+
+
+            response = openai.ChatCompletion.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "You are a helpful assistant."},
+                    {"role": "user", "content": f"{sentence}"}
+                ]
+            )
+
+
+            chat_results = response["choices"][0]["message"]["content"]
+
+
+    else:
+        form = ChatForm()
+
+
+    template = loader.get_template('team4_chatgpt/newtext.html')
+    context = {
+        'form': form,
+        'chat_results': chat_results  # 変数名を 'chat_results' に修正
+    }
+
+
+    return HttpResponse(template.render(context, request))
+
+
+    

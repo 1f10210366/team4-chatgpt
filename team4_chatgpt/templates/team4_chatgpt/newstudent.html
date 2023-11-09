@@ -1,0 +1,45 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教材登録</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'team4_chatgpt/css/top.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'team4_chatgpt:top' %}">ホーム</a></li>
+                <li><a href="{% url  'team4_chatgpt:index' %}">試験問題作成</a></li>
+                <li><a href="{% url 'team4_chatgpt:text' %}">教材登録</a></li>
+                <li><a href="#">製品</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h1>新規学生登録</h1>
+            <p>新しい学生の登録を行ってください</p>
+            <a href="#" class="cta-button">詳細を見る</a>
+        </section>
+
+
+       
+
+
+
+
+     
+    </main>
+    <footer>
+        <p>&copy; 2023 サイト名</p>
+    </footer>
+</body>
+</html>
